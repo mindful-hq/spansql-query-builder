@@ -23,5 +23,10 @@
     "exclude_files": {
       "external/org_golang_google_protobuf/.*": "Third party code"
     }
+  },
+  "copylocks": {
+    "exclude_files": {
+      "external/org_golang_google_protobuf/.*": "Third party code"
+    }
   }
 }
