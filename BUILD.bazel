@@ -1,8 +1,13 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@io_bazel_rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
+load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 
 # gazelle:prefix github.com/mindful-hq/spansql-query-builder
 gazelle(name = "gazelle")
+
+buildifier(
+    name = "buildifier",
+)
 
 nogo(
     name = "nogo",
