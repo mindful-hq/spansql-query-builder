@@ -1,0 +1,11 @@
+ls:
+  .dir: snake_case
+  .go: snake_case
+
+ignore:
+  - .git
+  - .idea
+  - bazel-bin
+  - bazel-out
+  - bazel-testlogs
+  - bazel-spansql-query-builder

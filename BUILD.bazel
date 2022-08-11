@@ -1,0 +1,12 @@
+load("@bazel_gazelle//:def.bzl", "gazelle")
+load("@io_bazel_rules_go//go:def.bzl", "TOOLS_NOGO", "nogo")
+
+# gazelle:prefix github.com/mindful-hq/spansql-query-builder
+gazelle(name = "gazelle")
+
+nogo(
+    name = "nogo",
+    config = ":nogo.json",
+    visibility = ["//visibility:public"],
+    deps = TOOLS_NOGO + [],
+)

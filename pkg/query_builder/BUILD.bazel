@@ -1,0 +1,37 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_library(
+    name = "query_builder",
+    srcs = [
+        "distinct.go",
+        "join.go",
+        "limit.go",
+        "new.go",
+        "offset.go",
+        "order.go",
+        "query.go",
+        "query_builder.go",
+        "select.go",
+        "select_from.go",
+        "span.go",
+        "sql.go",
+        "table.go",
+        "where.go",
+    ],
+    importpath = "github.com/mindful-hq/spansql-query-builder/pkg/query_builder",
+    visibility = ["//visibility:public"],
+    deps = ["@com_google_cloud_go_spanner//spansql"],
+)
+
+go_test(
+    name = "query_builder_test",
+    srcs = [
+        "select_from_test.go",
+        "where_test.go",
+    ],
+    embed = [":query_builder"],
+    deps = [
+        "@com_github_stretchr_testify//assert",
+        "@com_google_cloud_go_spanner//spansql",
+    ],
+)

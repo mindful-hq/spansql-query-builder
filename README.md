@@ -1,2 +1,1 @@
-# spansql-query-builder
-Google Spanner SpanSQL Query Builder
+# Google Spanner SpanSQL Query Builder
