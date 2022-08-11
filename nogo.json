@@ -18,5 +18,10 @@
     "exclude_files": {
       "external/com_google_cloud_go_spanner/.*": "Third party code"
     }
+  },
+  "unreachable": {
+    "exclude_files": {
+      "external/org_golang_google_protobuf/.*": "Third party code"
+    }
   }
 }
