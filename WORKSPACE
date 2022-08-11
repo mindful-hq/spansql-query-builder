@@ -19,9 +19,19 @@ http_archive(
     ],
 )
 
+http_archive(
+    name = "rules_proto",
+    sha256 = "9850fcf6ad40fa348e6f13b2cfef4bb4639762f804794f2bf61d988f4ba0dae9",
+    strip_prefix = "rules_proto-4.0.0-3.19.2-2",
+    urls = [
+        "https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0-3.19.2-2.tar.gz",
+    ],
+)
+
 load("@io_bazel_rules_go//go:deps.bzl", "go_register_toolchains", "go_rules_dependencies")
 load("@bazel_gazelle//:deps.bzl", "gazelle_dependencies")
 load("//:repositories.bzl", "go_repositories")
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
 
 # gazelle:repository_macro repositories.bzl%go_repositories
 go_repositories()
@@ -32,5 +42,9 @@ go_register_toolchains(
     "1.17.13",
     nogo = "@//:nogo",
 )
+
+rules_proto_dependencies()
+
+rules_proto_toolchains()
 
 gazelle_dependencies()
