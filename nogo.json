@@ -1,9 +1,7 @@
 {
   "shadow": {
     "exclude_files": {
-      "external/in_gopkg_yaml_v3/.*": "Third party code",
-      "external/com_google_cloud_go_spanner/.*": "Third party code",
-      "external/com_github_stretchr_testify/.*": "Third party code"
+      "external/.*": "Third party code"
     }
   },
   "unsafeptr": {
