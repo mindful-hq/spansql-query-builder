@@ -12,7 +12,8 @@
   "composites": {
     "exclude_files": {
       "external/org_golang_google_protobuf/.*": "Third party code",
-      "external/com_google_cloud_go_spanner/.*": "Third party code"
+      "external/com_google_cloud_go_spanner/.*": "Third party code",
+      "external/com_github_bazelbuild_buildtools/.*": "Third party code"
     }
   },
   "nilness": {
