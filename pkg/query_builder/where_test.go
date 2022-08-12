@@ -57,7 +57,7 @@ func logicalOpParen(name string) spansql.Paren {
 func TestWhereResolve(t *testing.T) {
 	var tests = []struct {
 		name         string
-		queryBuilder *QueryBuilder
+		queryBuilder IQueryBuilder
 		where        []spansql.BoolExpr
 		expr         spansql.BoolExpr
 		sql          string
@@ -300,7 +300,7 @@ func TestWhereResolve(t *testing.T) {
 			for _, expr := range test.where {
 				test.queryBuilder.Where(expr)
 			}
-			var expr = test.queryBuilder.whereResolve()
+			var expr = test.queryBuilder.(*QueryBuilder).whereResolve()
 			assert.Equal(t, test.expr, expr)
 
 			if expr != nil {

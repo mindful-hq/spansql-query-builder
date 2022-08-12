@@ -1,6 +1,6 @@
 package query_builder
 
-func (queryBuilder *QueryBuilder) Join(join SelectFromJoin) *QueryBuilder {
+func (queryBuilder *QueryBuilder) Join(join SelectFromJoin) IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

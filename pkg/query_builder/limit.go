@@ -2,7 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
-func (queryBuilder *QueryBuilder) Limit(limit spansql.LiteralOrParam) *QueryBuilder {
+func (queryBuilder *QueryBuilder) Limit(limit spansql.LiteralOrParam) IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

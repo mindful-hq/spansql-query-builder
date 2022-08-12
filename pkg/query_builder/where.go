@@ -2,7 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
-func (queryBuilder *QueryBuilder) Where(expr spansql.BoolExpr) *QueryBuilder {
+func (queryBuilder *QueryBuilder) Where(expr spansql.BoolExpr) IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

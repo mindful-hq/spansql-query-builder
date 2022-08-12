@@ -5,7 +5,7 @@ import (
 	"sync"
 )
 
-func New() *QueryBuilder {
+func New() IQueryBuilder {
 	return &QueryBuilder{
 		query: &spansql.Query{
 			Select: spansql.Select{},

@@ -9,7 +9,7 @@ import (
 func TestSelectFromResolve(t *testing.T) {
 	var tests = []struct {
 		name         string
-		queryBuilder *QueryBuilder
+		queryBuilder IQueryBuilder
 		table        []spansql.SelectFromTable
 		join         []SelectFromJoin
 		expr         []spansql.SelectFrom
@@ -155,7 +155,7 @@ func TestSelectFromResolve(t *testing.T) {
 				}
 			}
 
-			var expr = test.queryBuilder.selectFromResolve()
+			var expr = test.queryBuilder.(*QueryBuilder).selectFromResolve()
 			assert.Equal(t, test.expr, expr)
 
 			if expr != nil {

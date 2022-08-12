@@ -2,7 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
-func (queryBuilder *QueryBuilder) Offset(offset spansql.LiteralOrParam) *QueryBuilder {
+func (queryBuilder *QueryBuilder) Offset(offset spansql.LiteralOrParam) IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

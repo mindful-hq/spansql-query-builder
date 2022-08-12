@@ -1,6 +1,6 @@
 package query_builder
 
-func (queryBuilder *QueryBuilder) Distinct() *QueryBuilder {
+func (queryBuilder *QueryBuilder) Distinct() IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

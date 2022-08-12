@@ -2,7 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
-func (queryBuilder *QueryBuilder) Order(order spansql.Order) *QueryBuilder {
+func (queryBuilder *QueryBuilder) Order(order spansql.Order) IQueryBuilder {
 	queryBuilder.mutex.Lock()
 	defer queryBuilder.mutex.Unlock()
 

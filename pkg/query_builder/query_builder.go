@@ -19,14 +19,14 @@ type QueryBuilder struct {
 }
 
 type IQueryBuilder interface {
-	Distinct() *QueryBuilder
-	Table(table spansql.SelectFromTable) *QueryBuilder
-	Select(_select []spansql.Expr) *QueryBuilder
-	Join(join SelectFromJoin) *QueryBuilder
-	Where(expr spansql.BoolExpr) *QueryBuilder
-	Order(order spansql.Order) *QueryBuilder
-	Limit(limit spansql.LiteralOrParam) *QueryBuilder
-	Offset(offset spansql.LiteralOrParam) *QueryBuilder
+	Distinct() IQueryBuilder
+	Table(table spansql.SelectFromTable) IQueryBuilder
+	Select(_select []spansql.Expr) IQueryBuilder
+	Join(join SelectFromJoin) IQueryBuilder
+	Where(expr spansql.BoolExpr) IQueryBuilder
+	Order(order spansql.Order) IQueryBuilder
+	Limit(limit spansql.LiteralOrParam) IQueryBuilder
+	Offset(offset spansql.LiteralOrParam) IQueryBuilder
 	Query() *spansql.Query
 	SQL() string
 }
