@@ -9,3 +9,29 @@
 
 High level lightweight [spansql](https://pkg.go.dev/cloud.google.com/go/spanner/spansql) query builder.
 This is not an officially supported Google product.
+
+## Example
+
+```go
+query_builder.New().
+    Select([]spansql.Expr{
+        spansql.ID("Todos.Id"),
+        spansql.ID("Places.Name"),
+    }).
+    Table(spansql.SelectFromTable{
+        Table: "Todos",
+    }).
+    Join(query_builder.SelectFromJoin{
+        Type: spansql.InnerJoin,
+        LHS:  spansql.SelectFromTable{Table: "Todos"},
+        On:   spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.PathExp{"Todos", "Id"}, RHS: spansql.PathExp{"Places.TodoId"}},
+    }).
+    Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
+    Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")})
+```
+
+```sql 
+SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Todos ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
+```
+
+Play with it: [Go Playground](https://go.dev/play/p/sCXm9N3-svB)
