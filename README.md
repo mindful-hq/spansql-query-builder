@@ -23,7 +23,7 @@ query_builder.New().
     }).
     Join(query_builder.SelectFromJoin{
         Type: spansql.InnerJoin,
-        LHS:  spansql.SelectFromTable{Table: "Todos"},
+        LHS:  spansql.SelectFromTable{Table: "Places"},
         On:   spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.PathExp{"Todos", "Id"}, RHS: spansql.PathExp{"Places.TodoId"}},
     }).
     Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
@@ -31,7 +31,7 @@ query_builder.New().
 ```
 
 ```sql 
-SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Todos ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
+SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Places ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
 ```
 
-Play with it: [Go Playground](https://go.dev/play/p/sCXm9N3-svB)
+Play with it: [Go Playground](https://go.dev/play/p/jDBn2ivnfZ9)
