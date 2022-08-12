@@ -18,7 +18,7 @@ var sql = query_builder.New().
         spansql.ID("Todos.Id"),
         spansql.ID("Places.Name"),
     }).
-        Table(spansql.SelectFromTable{
+    Table(spansql.SelectFromTable{
         Table: "Todos",
     }).
     Join(query_builder.SelectFromJoin{
