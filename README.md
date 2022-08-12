@@ -13,7 +13,7 @@ This is not an officially supported Google product.
 ## Example
 
 ```go
-query_builder.New().
+var sql = query_builder.New().
     Select([]spansql.Expr{
         spansql.ID("Todos.Id"),
         spansql.ID("Places.Name"),
@@ -27,11 +27,12 @@ query_builder.New().
         On:   spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.PathExp{"Todos", "Id"}, RHS: spansql.PathExp{"Places.TodoId"}},
     }).
     Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
-    Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")})
+    Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")}). 
+	SQL()
 ```
 
 ```sql 
 SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Places ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
 ```
 
-Play with it: [Go Playground](https://go.dev/play/p/jDBn2ivnfZ9)
+Play with it: [Go Playground](https://go.dev/play/p/JDqnMgrGS7y)
