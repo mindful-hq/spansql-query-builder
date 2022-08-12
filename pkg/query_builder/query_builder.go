@@ -22,7 +22,7 @@ type IQueryBuilder interface {
 	Distinct() *QueryBuilder
 	Table(table spansql.SelectFromTable) *QueryBuilder
 	Select(_select []spansql.Expr) *QueryBuilder
-	Join(join spansql.SelectFromJoin) *QueryBuilder
+	Join(join SelectFromJoin) *QueryBuilder
 	Where(expr spansql.BoolExpr) *QueryBuilder
 	Order(order spansql.Order) *QueryBuilder
 	Limit(limit spansql.LiteralOrParam) *QueryBuilder
