@@ -19,5 +19,6 @@ func New() IQueryBuilder {
 		order:    make([]spansql.Order, 0),
 		limit:    nil,
 		offset:   nil,
+		param:    make(map[string]interface{}, 0),
 	}
 }

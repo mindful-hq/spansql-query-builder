@@ -16,6 +16,7 @@ type QueryBuilder struct {
 	where         []spansql.BoolExpr
 	order         []spansql.Order
 	limit, offset spansql.LiteralOrParam
+	param         map[string]interface{}
 }
 
 type IQueryBuilder interface {
@@ -27,6 +28,7 @@ type IQueryBuilder interface {
 	Order(order spansql.Order) IQueryBuilder
 	Limit(limit spansql.LiteralOrParam) IQueryBuilder
 	Offset(offset spansql.LiteralOrParam) IQueryBuilder
+	Param(name string, value interface{}) spansql.Param
 	Query() *spansql.Query
-	SQL() string
+	SQL() (string, map[string]interface{})
 }

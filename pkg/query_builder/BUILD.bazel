@@ -9,6 +9,7 @@ go_library(
         "new.go",
         "offset.go",
         "order.go",
+        "param.go",
         "query.go",
         "query_builder.go",
         "select.go",

@@ -14,6 +14,7 @@ func TestSelectFromResolve(t *testing.T) {
 		join         []SelectFromJoin
 		expr         []spansql.SelectFrom
 		sql          string
+		param        map[string]interface{}
 		err          assert.ErrorAssertionFunc
 	}{
 		{
@@ -23,6 +24,7 @@ func TestSelectFromResolve(t *testing.T) {
 			join:         nil,
 			expr:         nil,
 			sql:          "SELECT ",
+			param:        map[string]interface{}{},
 			err:          assert.NoError,
 		},
 		{
@@ -35,8 +37,9 @@ func TestSelectFromResolve(t *testing.T) {
 			expr: []spansql.SelectFrom{
 				spansql.SelectFromTable{Table: "Test1"},
 			},
-			sql: `SELECT * FROM Test1`,
-			err: assert.NoError,
+			sql:   `SELECT * FROM Test1`,
+			param: map[string]interface{}{},
+			err:   assert.NoError,
 		},
 		{
 			name:         "two table, no join",
@@ -50,8 +53,9 @@ func TestSelectFromResolve(t *testing.T) {
 				spansql.SelectFromTable{Table: "Test1"},
 				spansql.SelectFromTable{Table: "Test2"},
 			},
-			sql: `SELECT * FROM Test1, Test2`,
-			err: assert.NoError,
+			sql:   `SELECT * FROM Test1, Test2`,
+			param: map[string]interface{}{},
+			err:   assert.NoError,
 		},
 		{
 			name:         "two table, one join",
@@ -84,8 +88,9 @@ func TestSelectFromResolve(t *testing.T) {
 					},
 				},
 			},
-			sql: `SELECT * FROM Test1, Test2 INNER JOIN Test3 ON Id = "test3"`,
-			err: assert.NoError,
+			sql:   `SELECT * FROM Test1, Test2 INNER JOIN Test3 ON Id = "test3"`,
+			param: map[string]interface{}{},
+			err:   assert.NoError,
 		},
 		{
 			name:         "two table, two join",
@@ -136,8 +141,9 @@ func TestSelectFromResolve(t *testing.T) {
 					},
 				},
 			},
-			sql: `SELECT * FROM Test1, Test2 INNER JOIN Test3 ON Id = "test3" INNER JOIN Test4 ON Id = "test4"`,
-			err: assert.NoError,
+			sql:   `SELECT * FROM Test1, Test2 INNER JOIN Test3 ON Id = "test3" INNER JOIN Test4 ON Id = "test4"`,
+			param: map[string]interface{}{},
+			err:   assert.NoError,
 		},
 	}
 
@@ -159,7 +165,9 @@ func TestSelectFromResolve(t *testing.T) {
 			assert.Equal(t, test.expr, expr)
 
 			if expr != nil {
-				assert.Equal(t, test.sql, test.queryBuilder.SQL())
+				var sql, param = test.queryBuilder.SQL()
+				assert.Equal(t, test.sql, sql)
+				assert.Equal(t, test.param, param)
 			}
 		})
 	}
