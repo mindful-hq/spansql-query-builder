@@ -35,4 +35,4 @@ var sql = query_builder.New().
 SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Places ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
 ```
 
-Play with it: [Go Playground](https://go.dev/play/p/JDqnMgrGS7y)
+Play with it: [Go Playground](https://go.dev/play/p/Ih2IOS8UCJn)
