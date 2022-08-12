@@ -27,7 +27,7 @@ var sql = query_builder.New().
         On:   spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.PathExp{"Todos", "Id"}, RHS: spansql.PathExp{"Places.TodoId"}},
     }).
     Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
-    Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")}). 
+    Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")}).
 	SQL()
 ```
 
