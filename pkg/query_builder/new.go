@@ -5,6 +5,11 @@ import (
 	"sync"
 )
 
+// New initalize/setup a new query builder
+//
+//	func main(){
+//		var queryBuilder = query_builder.New()
+//	}
 func New() IQueryBuilder {
 	return &QueryBuilder{
 		query: &spansql.Query{

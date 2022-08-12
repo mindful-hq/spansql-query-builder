@@ -4,6 +4,7 @@ import (
 	"regexp"
 )
 
+// SQL returns the query sql statement and all named paramters.
 func (queryBuilder *QueryBuilder) SQL() (string, map[string]interface{}) {
 	var query = queryBuilder.Query()
 

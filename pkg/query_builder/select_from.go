@@ -2,6 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
+// selectFromResolve resolves selectFromTable and selectFromJoin entries
 func (queryBuilder *QueryBuilder) selectFromResolve() []spansql.SelectFrom {
 	queryBuilder.mutex.RLock()
 	queryBuilder.mutex.RUnlock()
