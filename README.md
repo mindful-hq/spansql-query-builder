@@ -10,6 +10,12 @@
 High level lightweight [spansql](https://pkg.go.dev/cloud.google.com/go/spanner/spansql) query builder.
 This is not an officially supported Google product.
 
+## Install
+
+```bash
+go get -u github.com/mindful-hq/spansql-query-builder
+```
+
 ## Example
 
 ```go
