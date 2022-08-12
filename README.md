@@ -19,7 +19,7 @@ go get -u github.com/mindful-hq/spansql-query-builder
 ## Example
 
 ```go
-var sql = query_builder.New().
+var sql, params = query_builder.New().
     Select([]spansql.Expr{
         spansql.ID("Todos.Id"),
         spansql.ID("Places.Name"),
@@ -34,11 +34,11 @@ var sql = query_builder.New().
     }).
     Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
     Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")}).
-    SQL()  
+    SQL()
 ```
 
 ```sql 
 SELECT Todos.Id, Places.Name FROM Todos INNER JOIN Places ON Todos.Id = Places.TodoId WHERE Id = 1 AND Name LIKE "%test%"
 ```
 
-Play with it: [Go Playground](https://go.dev/play/p/Ih2IOS8UCJn)
+Play with it: [Go Playground](https://go.dev/play/p/PWv4aZDn6LP)
