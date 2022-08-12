@@ -18,7 +18,7 @@ var sql = query_builder.New().
         spansql.ID("Todos.Id"),
         spansql.ID("Places.Name"),
     }).
-    Table(spansql.SelectFromTable{
+        Table(spansql.SelectFromTable{
         Table: "Todos",
     }).
     Join(query_builder.SelectFromJoin{
@@ -28,7 +28,7 @@ var sql = query_builder.New().
     }).
     Where(spansql.ComparisonOp{Op: spansql.Eq, LHS: spansql.ID("Id"), RHS: spansql.IntegerLiteral(1)}).
     Where(spansql.ComparisonOp{Op: spansql.Like, LHS: spansql.ID("Name"), RHS: spansql.StringLiteral("%test%")}).
-	SQL()
+    SQL()  
 ```
 
 ```sql 
