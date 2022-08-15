@@ -2,6 +2,7 @@ package query_builder
 
 import "cloud.google.com/go/spanner/spansql"
 
+// Query resolves all given query parts and returns the filled spansql.Query struct.
 func (queryBuilder *QueryBuilder) Query() *spansql.Query {
 	var distinct = queryBuilder.distinctResolve()
 	var list = queryBuilder.selectResolve()
