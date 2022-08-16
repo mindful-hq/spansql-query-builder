@@ -25,11 +25,15 @@ steps:
 
   - name: bazel
     image: gcr.io/bazel-public/bazel:5.2.0
+    environment:
+      GOOGLE_CREDENTIALS:
+        from_secret: GOOGLE_CREDENTIALS_PRODUCTION
     resources:
       limits:
         cpu: 1400
         memory: 3800MiB
     commands:
-      - bazel run //:buildifier -- --lint=warn
-      - bazel build //...
-      - bazel test //...
+      - echo "$GOOGLE_CREDENTIALS" > /tmp/google_credentials.json
+      - bazel run --remote_cache=https://storage.googleapis.com/spansql-query-builder-bazel-production --google_credentials=/tmp/google_credentials.json //:buildifier -- --lint=warn
+      - bazel build --remote_cache=https://storage.googleapis.com/spansql-query-builder-bazel-production --google_credentials=/tmp/google_credentials.json //...
+      - bazel test --remote_cache=https://storage.googleapis.com/spansql-query-builder-bazel-production --google_credentials=/tmp/google_credentials.json //...
