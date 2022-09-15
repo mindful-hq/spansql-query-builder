@@ -29,6 +29,7 @@ type IQueryBuilder interface {
 	Limit(limit spansql.LiteralOrParam) IQueryBuilder
 	Offset(offset spansql.LiteralOrParam) IQueryBuilder
 	Param(name string, value interface{}) spansql.Param
+	ParamUnique(name string, value interface{}) spansql.Param
 	Query() *spansql.Query
 	SQL() (string, map[string]interface{})
 }
