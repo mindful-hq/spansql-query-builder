@@ -39,7 +39,7 @@ go_repositories()
 go_rules_dependencies()
 
 go_register_toolchains(
-    "1.17.13",
+    "1.19.1",
     nogo = "@//:nogo",
 )
 

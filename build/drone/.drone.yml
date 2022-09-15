@@ -24,7 +24,7 @@ steps:
         memory: 100MiB
 
   - name: bazel
-    image: gcr.io/bazel-public/bazel:5.2.0
+    image: gcr.io/bazel-public/bazel:5.3.0
     environment:
       GOOGLE_CREDENTIALS:
         from_secret: GOOGLE_CREDENTIALS_PRODUCTION
